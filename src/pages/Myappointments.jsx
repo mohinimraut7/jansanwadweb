@@ -45,6 +45,7 @@ export default function MyAppointments() {
     } catch (e) { /* silent */ }
     finally { setLoading(false); }
   };
+  
 
   const filtered = filter === "all" ? appts : appts.filter(a => a.status === filter);
 
