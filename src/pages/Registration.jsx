@@ -4,7 +4,7 @@ import citizenAxios from "../services/citizenAxios";
 
 export default function Register() {
   const navigate = useNavigate();
-  const [form, setForm]       = useState({ fullName:"", mobileNumber:"", email:"", password:"", confirmPassword:"" });
+  const [form, setForm]       = useState({ fullName:"",userName:"", mobileNumber:"", email:"", password:"", confirmPassword:"" });
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState("");
   const [success, setSuccess] = useState(false);
@@ -20,8 +20,8 @@ export default function Register() {
     if (form.password !== form.confirmPassword) { setError("Passwords जुळत नाहीत ❌"); return; }
     try {
       setLoading(true);
-      const res = await citizenAxios.post("/api/citizen/register", {
-        fullName: form.fullName, mobileNumber: form.mobileNumber,
+      const res = await citizenAxios.post("/citizen/register", {
+        fullName: form.fullName,userName: form.userName,mobileNumber: form.mobileNumber,
         email: form.email, password: form.password,
       });
       if (!res.data.success) { setError(res.data.message || "Registration failed ❌"); return; }
@@ -77,10 +77,15 @@ export default function Register() {
                 {error && <div className="auth-error">⚠️ {error}</div>}
                 <form onSubmit={handleRegister}>
                   <div className="auth-grid">
-                    <div className="auth-field full">
+                    <div className="auth-field">
                       <label className="auth-label">Full Name <span className="auth-req">*</span></label>
                       <input className="auth-input" type="text" placeholder="आपले पूर्ण नाव"
                         value={form.fullName} onChange={ch("fullName")} />
+                    </div>
+                      <div className="auth-field">
+                      <label className="auth-label">User Name</label>
+                      <input className="auth-input" type="userName" placeholder="User Name"
+                        value={form.userName} onChange={ch("userName")} />
                     </div>
                     <div className="auth-field">
                       <label className="auth-label">Mobile Number <span className="auth-req">*</span></label>

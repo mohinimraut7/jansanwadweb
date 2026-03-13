@@ -51,7 +51,7 @@ export default function BookAppointment() {
   const ch = (f) => (e) => setForm(p => ({ ...p, [f]: e.target.value }));
 
   useEffect(() => {
-    citizenAxios.get("/api/availability/get")
+    citizenAxios.get("/availability/get")
       .then(r => { if (r.data) setAvail(Array.isArray(r.data) ? r.data : r.data.data || []); })
       .catch(() => {});
   }, []);
@@ -125,7 +125,7 @@ export default function BookAppointment() {
       fd.append("submittedByName",  citizen.fullName     || "");
       if (form.visitorPhoto) fd.append("visitorPhoto", form.visitorPhoto);
 
-      const res = await citizenAxios.post("/api/citizen/book-appointment", fd, {
+      const res = await citizenAxios.post("/citizen/book-appointment", fd, {
         // headers: { "Content-Type": "multipart/form-data" },
         headers: { "Content-Type": undefined },
       });
@@ -364,7 +364,7 @@ export default function BookAppointment() {
                     <label>Ward <span>*</span></label>
                     <select className="f-input" value={form.ward} onChange={ch("ward")} style={{ cursor:"pointer" }}>
                       <option value="">Select Ward</option>
-                      {["Ward A","Ward B","Ward C","Ward D","Ward E","Ward F","Ward G","Ward H","Ward I","Ward J"].map(w => <option key={w}>{w}</option>)}
+                      {["Ward A","Ward B","Ward C","Ward D","Ward E","Ward F","Ward G","Ward H","Ward I","Ward J","General"].map(w => <option key={w}>{w}</option>)}
                     </select>
                   </div>
                 </div>

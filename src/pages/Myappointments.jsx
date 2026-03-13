@@ -39,7 +39,12 @@ export default function MyAppointments() {
     try {
       setLoading(true);
       const res = await citizenAxios.get("/citizen/my-appointments", {
-        params: { mobileNumber: citizen.mobileNumber },
+        //  citizenId: citizen._id,        // ✅ primary
+        params: { 
+    citizenId: citizen._id,
+    mobileNumber: citizen.mobileNumber,
+  },
+        // params: { mobileNumber: citizen.mobileNumber },
       });
       if (res.data.success) setAppts(res.data.appointments || []);
     } catch (e) { /* silent */ }
