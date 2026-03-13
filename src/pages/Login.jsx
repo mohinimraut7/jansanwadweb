@@ -1057,7 +1057,7 @@ const smsText = `Dear Citizen ${newOtp} is OTP for VVCMC Divyang Kalyan Manageme
       setOtpLoading(true);
       setError("");
       // ✅ Existing webportal endpoint: /citizenLoginByMobile
-      const res = await citizenAxios.post("/api/citizen/citizenLoginByMobile", {
+      const res = await citizenAxios.post("/citizen/citizenLoginByMobile", {
         mobileNo: mobileNo.trim(),
       });
       if (!res.data.success) {

@@ -38,7 +38,7 @@ export default function MyAppointments() {
   const fetchAppts = async () => {
     try {
       setLoading(true);
-      const res = await citizenAxios.get("/api/citizen/my-appointments", {
+      const res = await citizenAxios.get("/citizen/my-appointments", {
         params: { mobileNumber: citizen.mobileNumber },
       });
       if (res.data.success) setAppts(res.data.appointments || []);
