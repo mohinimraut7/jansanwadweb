@@ -1,14 +1,307 @@
-import React, { useState } from "react";
+
+
+// import React, { useState } from "react";
+// import { useNavigate, useLocation } from "react-router-dom";
+// import logo from "../../assets/vvcmclogo.jpg";
+
+// export default function CitizenNavbar() {
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const [menu, setMenu] = useState(false);
+
+//   const citizen = (() => {
+//     try { return JSON.parse(localStorage.getItem("citizenUser") || "null"); } catch { return null; }
+//   })();
+
+//   const logout = () => {
+//     localStorage.removeItem("citizenUser");
+//     navigate("/login");
+//     setMenu(false);
+//   };
+
+//   const isActive = (path) => location.pathname === path;
+
+//   return (
+//     <>
+//       <style>{`
+//         @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&display=swap');
+
+//         .cn-outer {
+//           background: transparent;
+//           padding: 12px 24px;
+//           position: sticky;
+//           top: 0;
+//           z-index: 100;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//         }
+
+//         /* ── Pill container ── */
+//         .cn-nav {
+//           background: #D09A50;
+//           color: #fff;
+//           padding: 6px 8px 6px 8px;
+//           display: flex;
+//           align-items: center;
+//           justify-content: space-between;
+//           height: 56px;
+//           border-radius: 999px;
+//           width: 96%;
+//           // max-width: 960px;
+//           box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+//         }
+
+//         /* ── Brand ── */
+//         .cn-brand {
+//           display: flex;
+//           align-items: center;
+//           gap: 10px;
+//           cursor: pointer;
+//           padding: 0 6px 0 4px;
+//         }
+//         .cn-logo-wrap {
+//           width: 40px;
+//           height: 40px;
+//           border-radius: 50%;
+//           overflow: hidden;
+//           border: 2px solid #1a1a1a;
+//           flex-shrink: 0;
+//           background: #fff;
+//         }
+//         .cn-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+//         .cn-brand-text { display: flex; flex-direction: column; }
+//         .cn-brand-name {
+//           font-family: 'Tiro Devanagari Marathi', serif;
+//           font-size: 13px;
+//           font-weight: 700;
+//           line-height: 1.25;
+//           color: #1a1a1a;
+//           white-space: nowrap;
+//         }
+//         .cn-brand-sub {
+//           font-size: 9px;
+//           color: #5a3a0a;
+//           letter-spacing: .7px;
+//           text-transform: uppercase;
+//           font-weight: 600;
+//         }
+
+//         /* ── Nav links ── */
+//         .cn-links {
+//           display: flex;
+//           align-items: center;
+//           gap: 2px;
+//         }
+//         .cn-link {
+//           padding: 7px 16px;
+//           border-radius: 999px;
+//           font-size: 13px;
+//           font-weight: 600;
+//           cursor: pointer;
+//           transition: all .18s;
+//           border: none;
+//           background: transparent;
+//           color: rgba(30,15,0,0.75);
+//           white-space: nowrap;
+//         }
+//         .cn-link:hover { background: rgba(0,0,0,0.1); color: #1a1a1a; }
+//         .cn-link.active { background: rgba(0,0,0,0.15); color: #1a1a1a; font-weight: 700; }
+
+//         .cn-citizen-name {
+//           font-size: 13px;
+//           color: #1a1a1a;
+//           font-weight: 700;
+//           padding: 0 6px;
+//           white-space: nowrap;
+//         }
+
+//         /* ── Pill buttons ── */
+//         .cn-btn-outline {
+//           padding: 7px 20px;
+//           border-radius: 999px;
+//           border: 1.5px solid rgba(30,15,0,0.35);
+//           background: transparent;
+//           color: #1a1a1a;
+//           font-size: 13px;
+//           font-weight: 700;
+//           cursor: pointer;
+//           transition: all .18s;
+//           white-space: nowrap;
+//         }
+//         .cn-btn-outline:hover { background: rgba(0,0,0,0.1); border-color: #1a1a1a; }
+
+//         .cn-btn-solid {
+//           padding: 7px 20px;
+//           border-radius: 999px;
+//           border: none;
+//           background: #1a1a1a;
+//           color: #D09A50;
+//           font-size: 13px;
+//           font-weight: 800;
+//           cursor: pointer;
+//           transition: all .18s;
+//           box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+//           white-space: nowrap;
+//         }
+//         .cn-btn-solid:hover { background: #333; box-shadow: 0 4px 16px rgba(0,0,0,0.35); }
+
+//         .cn-btn-danger {
+//           padding: 7px 20px;
+//           border-radius: 999px;
+//           border: 1.5px solid rgba(180,30,30,0.5);
+//           background: transparent;
+//           color: #b91c1c;
+//           font-size: 13px;
+//           font-weight: 700;
+//           cursor: pointer;
+//           transition: all .18s;
+//           white-space: nowrap;
+//         }
+//         .cn-btn-danger:hover { background: rgba(180,30,30,0.1); border-color: #dc2626; color: #dc2626; }
+
+//         /* ── Hamburger ── */
+//         .cn-ham {
+//           display: none;
+//           background: rgba(0,0,0,0.1);
+//           border: none;
+//           color: #1a1a1a;
+//           font-size: 18px;
+//           cursor: pointer;
+//           padding: 6px 10px;
+//           border-radius: 999px;
+//           transition: background .15s;
+//         }
+//         .cn-ham:hover { background: rgba(0,0,0,0.18); }
+
+//         /* ── Mobile menu ── */
+//         .cn-mobile-menu {
+//           display: none;
+//           position: fixed;
+//           top: 80px;
+//           left: 24px;
+//           right: 24px;
+//           background: #1a1a1a;
+//           z-index: 99;
+//           padding: 12px;
+//           border-radius: 20px;
+//           box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+//           flex-direction: column;
+//           gap: 4px;
+//           border: 1px solid rgba(255,255,255,0.08);
+//         }
+//         .cn-mobile-menu.open { display: flex; }
+//         .cn-mobile-link {
+//           padding: 10px 16px;
+//           border-radius: 12px;
+//           font-size: 14px;
+//           font-weight: 600;
+//           cursor: pointer;
+//           color: rgba(255,255,255,0.75);
+//           background: none;
+//           border: none;
+//           text-align: left;
+//           transition: background .15s;
+//         }
+//         .cn-mobile-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+//         .cn-mobile-link.active { background: rgba(208,154,80,0.15); color: #D09A50; }
+
+//         @media(max-width:700px){
+//           .cn-links { display: none; }
+//           .cn-ham { display: block; }
+//           .cn-brand-name { font-size: 11px; }
+//         }
+//       `}</style>
+
+//       <div className="cn-outer">
+//         <nav className="cn-nav">
+//           {/* Brand */}
+//           <div className="cn-brand" onClick={() => navigate("/")}>
+//             <div className="cn-logo-wrap">
+//               <img src={logo} alt="VVCMC" />
+//             </div>
+//             <div className="cn-brand-text">
+//               <span className="cn-brand-name">वसई-विरार शहर महानगरपालिका</span>
+//               <span className="cn-brand-sub">जन संवाद</span>
+              
+
+//             </div>
+//           </div>
+
+//           {/* Desktop links */}
+//           <div className="cn-links">
+//             <button className={`cn-link${isActive("/") ? " active" : ""}`} onClick={() => navigate("/")}>Home</button>
+//             {citizen && (
+//               <button className={`cn-link${isActive("/my-appointments") ? " active" : ""}`} onClick={() => navigate("/my-appointments")}>My Appointments</button>
+//             )}
+//             {citizen ? (
+//               <>
+//                 <span className="cn-citizen-name">👋 {citizen.fullName?.split(" ")[0]}</span>
+//                 <button className="cn-btn-solid" onClick={() => navigate("/book-appointment")}>+ Book</button>
+//                 <button className="cn-btn-danger" onClick={logout} title="Logout" style={{display:"flex",alignItems:"center",justifyContent:"center",width:"36px",height:"36px",padding:"0"}}>
+//                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+//                     <path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><line x1="12" y1="2" x2="12" y2="12"/>
+//                   </svg>
+//                 </button>
+//               </>
+//             ) : (
+//               <>
+//                 <button className="cn-btn-outline" onClick={() => navigate("/login")}>Login</button>
+//                 <button className="cn-btn-solid" onClick={() => navigate("/register")}>Register</button>
+//               </>
+//             )}
+//           </div>
+
+//           <button className="cn-ham" onClick={() => setMenu(m => !m)}>☰</button>
+//         </nav>
+//       </div>
+
+//       {/* Mobile menu */}
+//       <div className={`cn-mobile-menu${menu ? " open" : ""}`}>
+//         <button className={`cn-mobile-link${isActive("/") ? " active" : ""}`} onClick={() => { navigate("/"); setMenu(false); }}>🏠 Home</button>
+//         {citizen && (
+//           <button className={`cn-mobile-link${isActive("/my-appointments") ? " active" : ""}`} onClick={() => { navigate("/my-appointments"); setMenu(false); }}>📅 My Appointments</button>
+//         )}
+//         {citizen ? (
+//           <>
+//             <button className="cn-mobile-link" style={{ color: "#D09A50" }} onClick={() => { navigate("/book-appointment"); setMenu(false); }}>+ Book Appointment</button>
+//             <button className="cn-mobile-link" style={{ color: "#f87171" }} onClick={logout}>🚪 Logout</button>
+//           </>
+//         ) : (
+//           <>
+//             <button className="cn-mobile-link" onClick={() => { navigate("/login"); setMenu(false); }}>🔐 Login</button>
+//             <button className="cn-mobile-link" onClick={() => { navigate("/register"); setMenu(false); }}>📝 Register</button>
+//           </>
+//         )}
+//       </div>
+//     </>
+//   );
+// }
+
+
+
+
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../../assets/vvcmclogo.jpg";
 
 export default function CitizenNavbar() {
-  const navigate  = useNavigate();
-  const location  = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [menu, setMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const citizen = (() => {
     try { return JSON.parse(localStorage.getItem("citizenUser") || "null"); } catch { return null; }
   })();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("citizenUser");
@@ -22,64 +315,410 @@ export default function CitizenNavbar() {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&display=swap');
-        .cn-nav { background:#1a4a2e; color:#fff; padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:64px; box-shadow:0 2px 16px rgba(0,0,0,0.22); position:sticky; top:0; z-index:100; }
-        .cn-brand { display:flex; align-items:center; gap:12px; cursor:pointer; }
-        .cn-logo { width:40px; height:40px; border-radius:50%; background:#22c55e; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
-        .cn-brand-text { display:flex; flex-direction:column; }
-        .cn-brand-name { font-family:'Tiro Devanagari Marathi',serif; font-size:14px; font-weight:700; line-height:1.25; color:#fff; }
-        .cn-brand-sub { font-size:10px; color:#86efac; letter-spacing:.6px; text-transform:uppercase; }
-        .cn-links { display:flex; align-items:center; gap:6px; }
-        .cn-link { padding:7px 16px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer; transition:all .18s; border:none; background:transparent; color:rgba(255,255,255,0.75); }
-        .cn-link:hover { background:rgba(255,255,255,0.1); color:#fff; }
-        .cn-link.active { background:rgba(34,197,94,0.2); color:#4ade80; }
-        .cn-btn-outline { padding:7px 18px; border-radius:6px; border:1.5px solid #86efac; background:transparent; color:#86efac; font-size:13px; font-weight:700; cursor:pointer; transition:all .18s; }
-        .cn-btn-outline:hover { background:#86efac; color:#1a4a2e; }
-        .cn-btn-solid { padding:7px 18px; border-radius:6px; border:none; background:#22c55e; color:#fff; font-size:13px; font-weight:700; cursor:pointer; transition:all .18s; box-shadow:0 2px 8px rgba(34,197,94,0.3); }
-        .cn-btn-solid:hover { background:#16a34a; }
-        .cn-btn-danger { padding:7px 18px; border-radius:6px; border:none; background:#dc2626; color:#fff; font-size:13px; font-weight:700; cursor:pointer; transition:all .18s; }
-        .cn-citizen-name { font-size:13px; color:#86efac; font-weight:600; }
-        .cn-ham { display:none; background:none; border:none; color:#fff; font-size:22px; cursor:pointer; padding:4px; }
-        .cn-mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:#1a3d28; z-index:99; padding:12px 20px; box-shadow:0 8px 24px rgba(0,0,0,0.3); flex-direction:column; gap:6px; }
-        .cn-mobile-menu.open { display:flex; }
-        .cn-mobile-link { padding:10px 14px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; color:rgba(255,255,255,0.8); background:none; border:none; text-align:left; transition:background .15s; }
-        .cn-mobile-link:hover { background:rgba(255,255,255,0.08); color:#fff; }
-        .cn-mobile-link.active { background:rgba(34,197,94,0.15); color:#4ade80; }
+
+        .cn-outer {
+          background: transparent;
+          padding: 12px 24px;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cn-outer.scrolled {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(12px);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ── Pill container ── */
+        .cn-nav {
+          background: #D09A50;
+          color: #fff;
+          padding: 6px 8px 6px 8px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 56px;
+          border-radius: 999px;
+          width: 96%;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: scale(1);
+        }
+
+        .cn-outer.scrolled .cn-nav {
+          height: 48px;
+          box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+          transform: scale(0.98);
+        }
+
+        /* ── Brand ── */
+        .cn-brand {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          padding: 0 6px 0 4px;
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cn-brand:hover {
+          transform: translateX(2px);
+        }
+        .cn-logo-wrap {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 2px solid #1a1a1a;
+          flex-shrink: 0;
+          background: #fff;
+          transition: all 0.3s ease;
+        }
+        .cn-outer.scrolled .cn-logo-wrap {
+          width: 36px;
+          height: 36px;
+        }
+        .cn-logo-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        .cn-brand:hover .cn-logo-wrap img {
+          transform: scale(1.1);
+        }
+        .cn-brand-text {
+          display: flex;
+          flex-direction: column;
+          transition: opacity 0.3s ease;
+        }
+        .cn-brand-name {
+          font-family: 'Tiro Devanagari Marathi', serif;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 1.25;
+          color: #1a1a1a;
+          white-space: nowrap;
+          transition: font-size 0.3s ease;
+        }
+        .cn-outer.scrolled .cn-brand-name {
+          font-size: 12px;
+        }
+        .cn-brand-sub {
+          font-size: 9px;
+          color: #5a3a0a;
+          letter-spacing: .7px;
+          text-transform: uppercase;
+          font-weight: 600;
+          transition: font-size 0.3s ease;
+        }
+        .cn-outer.scrolled .cn-brand-sub {
+          font-size: 8px;
+        }
+
+        /* ── Nav links ── */
+        .cn-links {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+        }
+        .cn-link {
+          padding: 7px 16px;
+          border-radius: 999px;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          border: none;
+          background: transparent;
+          color: rgba(30,15,0,0.75);
+          white-space: nowrap;
+          position: relative;
+          overflow: hidden;
+        }
+        .cn-link::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.1);
+          transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: -1;
+          border-radius: 999px;
+        }
+        .cn-link:hover::before {
+          left: 0;
+        }
+        .cn-link:hover {
+          color: #1a1a1a;
+          transform: translateY(-2px);
+        }
+        .cn-link.active {
+          background: rgba(0,0,0,0.15);
+          color: #1a1a1a;
+          font-weight: 700;
+          transform: scale(1.05);
+        }
+
+        .cn-citizen-name {
+          font-size: 13px;
+          color: #1a1a1a;
+          font-weight: 700;
+          padding: 0 6px;
+          white-space: nowrap;
+          animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Pill buttons ── */
+        .cn-btn-outline {
+          padding: 7px 20px;
+          border-radius: 999px;
+          border: 1.5px solid rgba(30,15,0,0.35);
+          background: transparent;
+          color: #1a1a1a;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          white-space: nowrap;
+          position: relative;
+          overflow: hidden;
+        }
+        .cn-btn-outline::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.1);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: -1;
+          border-radius: 999px;
+        }
+        .cn-btn-outline:hover::after {
+          transform: scaleX(1);
+        }
+        .cn-btn-outline:hover {
+          border-color: #1a1a1a;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .cn-btn-solid {
+          padding: 7px 20px;
+          border-radius: 999px;
+          border: none;
+          background: #1a1a1a;
+          color: #D09A50;
+          font-size: 13px;
+          font-weight: 800;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+          white-space: nowrap;
+          position: relative;
+          overflow: hidden;
+        }
+        .cn-btn-solid::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, transparent, rgba(208,154,80,0.2));
+          transform: translateX(-100%);
+          transition: transform 0.5s ease;
+        }
+        .cn-btn-solid:hover::before {
+          transform: translateX(100%);
+        }
+        .cn-btn-solid:hover {
+          background: #333;
+          box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+          transform: translateY(-3px) scale(1.05);
+        }
+        .cn-btn-solid:active {
+          transform: translateY(-1px) scale(1.02);
+        }
+
+        .cn-btn-danger {
+          padding: 7px 20px;
+          border-radius: 999px;
+          border: 1.5px solid rgba(180,30,30,0.5);
+          background: transparent;
+          color: #b91c1c;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          white-space: nowrap;
+          position: relative;
+          overflow: hidden;
+        }
+        .cn-btn-danger svg {
+          transition: transform 0.3s ease;
+        }
+        .cn-btn-danger:hover svg {
+          transform: rotate(90deg);
+        }
+        .cn-btn-danger:hover {
+          background: rgba(180,30,30,0.1);
+          border-color: #dc2626;
+          color: #dc2626;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(185,28,28,0.2);
+        }
+
+        /* ── Hamburger ── */
+        .cn-ham {
+          display: none;
+          background: rgba(0,0,0,0.1);
+          border: none;
+          color: #1a1a1a;
+          font-size: 18px;
+          cursor: pointer;
+          padding: 6px 10px;
+          border-radius: 999px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cn-ham:hover {
+          background: rgba(0,0,0,0.18);
+          transform: scale(1.1);
+        }
+        .cn-ham:active {
+          transform: scale(0.95);
+        }
+
+        /* ── Mobile menu ── */
+        .cn-mobile-menu {
+          display: none;
+          position: fixed;
+          top: 80px;
+          left: 24px;
+          right: 24px;
+          background: #1a1a1a;
+          z-index: 99;
+          padding: 12px;
+          border-radius: 20px;
+          box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+          flex-direction: column;
+          gap: 4px;
+          border: 1px solid rgba(255,255,255,0.08);
+          animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-origin: top;
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        .cn-mobile-menu.open { display: flex; }
+        .cn-mobile-link {
+          padding: 10px 16px;
+          border-radius: 12px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          color: rgba(255,255,255,0.75);
+          background: none;
+          border: none;
+          text-align: left;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+        }
+        .cn-mobile-link::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 3px;
+          height: 0;
+          background: #D09A50;
+          transition: height 0.3s ease;
+          border-radius: 0 3px 3px 0;
+        }
+        .cn-mobile-link:hover::before {
+          height: 70%;
+        }
+        .cn-mobile-link:hover {
+          background: rgba(255,255,255,0.06);
+          color: #fff;
+          transform: translateX(4px);
+        }
+        .cn-mobile-link.active {
+          background: rgba(208,154,80,0.15);
+          color: #D09A50;
+        }
+        .cn-mobile-link.active::before {
+          height: 70%;
+        }
+
         @media(max-width:700px){
-          .cn-links { display:none; }
-          .cn-ham { display:block; }
+          .cn-links { display: none; }
+          .cn-ham { display: block; }
+          .cn-brand-name { font-size: 11px; }
+          .cn-outer.scrolled .cn-brand-name { font-size: 10px; }
         }
       `}</style>
 
-      <nav className="cn-nav">
-        <div className="cn-brand" onClick={() => navigate("/")}>
-          <div className="cn-logo">🏛️</div>
-          <div className="cn-brand-text">
-            <span className="cn-brand-name">वसई-विरार शहर महानगरपालिका</span>
-            <span className="cn-brand-sub">Citizen Appointment Portal</span>
+      <div className={`cn-outer${scrolled ? " scrolled" : ""}`}>
+        <nav className="cn-nav">
+          {/* Brand */}
+          <div className="cn-brand" onClick={() => navigate("/")}>
+            <div className="cn-logo-wrap">
+              <img src={logo} alt="VVCMC" />
+            </div>
+            <div className="cn-brand-text">
+              <span className="cn-brand-name">वसई-विरार शहर महानगरपालिका</span>
+              <span className="cn-brand-sub">जन संवाद</span>
+            </div>
           </div>
-        </div>
 
-        <div className="cn-links">
-          <button className={`cn-link${isActive("/") ? " active" : ""}`} onClick={() => navigate("/")}>Home</button>
-          {citizen && (
-            <button className={`cn-link${isActive("/my-appointments") ? " active" : ""}`} onClick={() => navigate("/my-appointments")}>My Appointments</button>
-          )}
-          {citizen ? (
-            <>
-              <span className="cn-citizen-name">👋 {citizen.fullName?.split(" ")[0]}</span>
-              <button className="cn-btn-solid" onClick={() => navigate("/book-appointment")}>+ Book</button>
-              <button className="cn-btn-danger" onClick={logout}>Logout</button>
-            </>
-          ) : (
-            <>
-              <button className="cn-btn-outline" onClick={() => navigate("/login")}>Login</button>
-              <button className="cn-btn-solid"   onClick={() => navigate("/register")}>Register</button>
-            </>
-          )}
-        </div>
+          {/* Desktop links */}
+          <div className="cn-links">
+            <button className={`cn-link${isActive("/") ? " active" : ""}`} onClick={() => navigate("/")}>Home</button>
+            {citizen && (
+              <button className={`cn-link${isActive("/my-appointments") ? " active" : ""}`} onClick={() => navigate("/my-appointments")}>My Appointments</button>
+            )}
+            {citizen ? (
+              <>
+                <span className="cn-citizen-name">👋 {citizen.fullName?.split(" ")[0]}</span>
+                <button className="cn-btn-solid" onClick={() => navigate("/book-appointment")}>+ Book</button>
+                <button className="cn-btn-danger" onClick={logout} title="Logout" style={{display:"flex",alignItems:"center",justifyContent:"center",width:"36px",height:"36px",padding:"0"}}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><line x1="12" y1="2" x2="12" y2="12"/>
+                  </svg>
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="cn-btn-outline" onClick={() => navigate("/login")}>Login</button>
+                <button className="cn-btn-solid" onClick={() => navigate("/register")}>Register</button>
+              </>
+            )}
+          </div>
 
-        <button className="cn-ham" onClick={() => setMenu(m => !m)}>☰</button>
-      </nav>
+          <button className="cn-ham" onClick={() => setMenu(m => !m)}>☰</button>
+        </nav>
+      </div>
 
       {/* Mobile menu */}
       <div className={`cn-mobile-menu${menu ? " open" : ""}`}>
@@ -89,12 +728,12 @@ export default function CitizenNavbar() {
         )}
         {citizen ? (
           <>
-            <button className="cn-mobile-link" style={{ color:"#4ade80" }} onClick={() => { navigate("/book-appointment"); setMenu(false); }}>+ Book Appointment</button>
-            <button className="cn-mobile-link" style={{ color:"#f87171" }} onClick={logout}>🚪 Logout</button>
+            <button className="cn-mobile-link" style={{ color: "#D09A50" }} onClick={() => { navigate("/book-appointment"); setMenu(false); }}>+ Book Appointment</button>
+            <button className="cn-mobile-link" style={{ color: "#f87171" }} onClick={logout}>🚪 Logout</button>
           </>
         ) : (
           <>
-            <button className="cn-mobile-link" onClick={() => { navigate("/login");    setMenu(false); }}>🔐 Login</button>
+            <button className="cn-mobile-link" onClick={() => { navigate("/login"); setMenu(false); }}>🔐 Login</button>
             <button className="cn-mobile-link" onClick={() => { navigate("/register"); setMenu(false); }}>📝 Register</button>
           </>
         )}

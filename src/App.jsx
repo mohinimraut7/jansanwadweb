@@ -7,6 +7,7 @@ import Login          from "./pages/Login";
 import Registration   from "./pages/Registration";
 import BookAppointment from "./pages/BookAppointment";
 import Myappointments from "./pages/Myappointments";
+import Footer from "./components/common/Footer";
 
 function ProtectedRoute({ children }) {
   const citizen = localStorage.getItem("citizenUser");
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/my-appointments"  element={<ProtectedRoute><Myappointments /></ProtectedRoute>} />
         <Route path="*"                 element={<Navigate to="/" replace />} />
       </Routes>
+      <Footer/>
     </>
   );
 }
