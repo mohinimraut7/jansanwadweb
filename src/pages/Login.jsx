@@ -4749,7 +4749,7 @@ export default function Login() {
               </div>
 
               <h2 className="mayor-name">मा. श्री.अजीव पाटील</h2>
-              <p className="mayor-title">मा. महामांगर, वसई-विरार</p>
+              <p className="mayor-title">मा. महापौर, वसई विरार शहर महानगरपालिका</p>
 
               <div className="mayor-progress">
                 <div className="mayor-progress-bar"></div>
