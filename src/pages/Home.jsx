@@ -677,10 +677,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import heroBg from "../assets/vvcmcbuildingbanner.png";
 import mayorPhoto from "../assets/ajivsir1.jpeg";
-// import narangibridgepahani from "../assets/narangibridgepahani.png";
+// import meeting from "../assets/meeting.jpeg";
+import meeting from "../assets/meeting2.jpeg";
+import narangibridgepahani from "../assets/narangibridgeahani.jpeg";
 // conditional import — file नसेल तर null
-let narangibridgepahani = null;
-try { narangibridgepahani = require("../assets/narangibridgepahani.png"); } catch {}
+// let narangibridgepahani = null;
+// try { narangibridgepahani = require("../assets/narangibridgeahani.jpeg"); } catch {}
 
 
 /* ── Lottie loader ─────────────────────────────────────── */
@@ -725,15 +727,26 @@ export default function Home() {
 
   const projects = [
     {
-      icon: "🛣️", tag: "पायाभूत सुविधा",
+      icon: ":🌉", tag: "पायाभूत सुविधा",
       title: "नारंगी उड्डाणपूल प्रकल्प पाहणी",
       desc: "नारंगी येथील उड्डाणपुलाच्या कामाची मा. महापौर श्री. अजीव पाटील यांनी प्रत्यक्ष पाहणी केली. या पाहणीदरम्यान संबंधित अधिकारी, रेल्वे अधिकारी, कंत्राटदार व उपकंत्राटदार यांच्याशी चर्चा करून कामाची प्रगती व अडचणी जाणून घेतल्या. तसेच कामाला अधिक गती देण्याच्या सूचना दिल्या. हा उड्डाणपूल चालू महिन्याच्या अखेरीपर्यंत वाहतुकीसाठी खुला करण्याचा प्रयत्न सुरू आहे.",
       progress: 68, status: "ongoing", statusLabel: "सुरू आहे",
       budget: "₹ 42 कोटी", deadline: "डिसेंबर 2025",
-      stat: "12 km", statLbl: "रस्ता रुंदीकरण",
+      stat: "", statLbl: "मार्च २०२६ अखेर वाहतुकीसाठी खुले",
       accent: "#51ABAC", bg: "#e8f7f7",
       bgimg:narangibridgepahani
     },
+    {
+      icon: "🏛️",
+      title: "समिती गठनाबाबत चर्चा",
+      desc: "स्थायी समितीच्या महत्त्वाच्या विषयांवर तसेच प्रभाग समित्यांच्या गठनाबाबत  चर्चा सुरू आहे.",
+      progress: 45, status: "ongoing", statusLabel: "सुरू आहे",
+      budget: "₹ 85 कोटी", deadline: "मार्च 2026",
+      stat: "", statLbl: "",
+      accent: "#028945", bg: "#e8f5ef",
+      bgimg:meeting
+    },
+
     {
       icon: "💧", tag: "पाणीपुरवठा",
       title: "24×7 पाणीपुरवठा योजना — वसई विभाग",
@@ -774,6 +787,7 @@ export default function Home() {
 
 
   const faqs = [
+    {q:"शहराचा विचार केला तर फेरीवाला धोरण अजूनही राबवण्यात आलेले नाही. त्यामुळे वाहतूक कोंडीचा मोठा सामना करावा लागत आहे आणि लोकांना त्रास होत आहे. यामधून आपण कसा मार्ग काढणार आहोत?",a:"वाहतूक कोंडी कमी करण्यासाठी आणि स्टेशन परिसरातील समस्या सोडवण्यासाठी न्यायालयाच्या मार्गदर्शक तत्त्वांनुसार लवकरात लवकर कारवाई करण्यात येईल. संपूर्ण स्टेशन परिसर टप्प्याटप्प्याने मोकळा करून नागरिकांना होणारा त्रास कमी करण्यावर भर दिला जाईल."},
     { q: "Appointment बुक करण्यासाठी काय करावे लागेल?", a: "प्रथम Register करा, त्यानंतर उपलब्ध date आणि time slot निवडा, आवश्यक माहिती भरा आणि Submit करा. Admin approval नंतर तुम्हाला Confirmation Token मिळेल." },
     { q: "Appointment confirm होण्यासाठी किती वेळ लागतो?", a: "Appointment submit केल्यानंतर Admin द्वारे review केले जाते. साधारणतः 1-2 कार्यालयीन दिवसांत confirmation दिली जाते. SMS आणि Portal वर status दिसेल." },
     { q: "भेटीच्या दिवशी काय घेऊन यावे?", a: "भेटीच्या दिवशी तुमचा Confirmation Token आणि एक valid ओळखपत्र (Aadhar Card, Voter ID इ.) सोबत आणावे. Token शिवाय भेट होणार नाही." },
@@ -1127,6 +1141,10 @@ export default function Home() {
           border: 1px solid rgba(81,171,172,0.12);
           border-right: none;
           border-radius: 24px 0 0 24px;
+          background-size: cover;          /* 👈 ADD */
+         background-position: top;        /* 👈 ADD (MOST IMPORTANT) */
+         background-repeat: no-repeat;    /* 👈 ADD */
+
         }
         .proj-tag {
           display: inline-flex; align-items: center; gap: 6px;
@@ -1170,6 +1188,9 @@ export default function Home() {
           padding: 32px 20px;
           border-radius: 0 24px 24px 0;
           transition: background 0.5s;
+           background-size: cover;          /* 👈 ADD */
+         background-position: top;        /* 👈 ADD (MOST IMPORTANT) */
+         background-repeat: no-repeat;    /* 👈 ADD */
         }
         .proj-icon { font-size: 64px; line-height: 1; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
         .proj-stat-num { font-family:'Crimson Pro',serif; font-size:38px; font-weight:800; color:#fff; text-align:center; line-height:1; }
@@ -1423,14 +1444,19 @@ export default function Home() {
   className="proj-card"
   onMouseEnter={() => setAutoPlay(false)}
   onMouseLeave={() => setAutoPlay(true)}
- style={p.bgimg ? {
-  backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.92) 55%, ${p.accent}99 100%), url(${p.bgimg})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-} : {}}
+  style={p.bgimg ? {
+    backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.92) 55%, ${p.accent}99 100%), url(${p.bgimg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  } : {}}
 > 
               {/* Left */}
-              <div className="proj-left" style={{background:'transparent '}}>
+              <div className="proj-left" 
+  style={{
+    background: 'transparent',
+    border: p.bgimg ? 'none' : '1px solid rgba(81,171,172,0.12)',  // ← bgimg असेल तर border काढा
+    borderRight: 'none'
+  }}>
                 <div className="proj-tag" style={{ background:`${p.accent}18`, color:p.accent }}>
                   {p.icon} {p.tag}
                 </div>

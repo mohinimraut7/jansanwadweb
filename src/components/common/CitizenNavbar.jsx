@@ -424,7 +424,7 @@ export default function CitizenNavbar() {
         .cn-links {
           display: flex;
           align-items: center;
-          gap: 2px;
+          gap: 10px;
         }
         .cn-link {
           padding: 7px 16px;
@@ -728,7 +728,7 @@ export default function CitizenNavbar() {
         )}
         {citizen ? (
           <>
-            <button className="cn-mobile-link" style={{ color: "#D09A50" }} onClick={() => { navigate("/book-appointment"); setMenu(false); }}>+ Book Appointment</button>
+            <button className="cn-mobile-link" style={{ color: "#D09A50"}} onClick={() => { navigate("/book-appointment"); setMenu(false); }}>+ Book Appointment</button>
             <button className="cn-mobile-link" style={{ color: "#f87171" }} onClick={logout}>🚪 Logout</button>
           </>
         ) : (
