@@ -4486,7 +4486,7 @@ export default function Home() {
         </div>
 
         {/* ══ FAQ ══ */}
-        <div className="faq-section">
+        {/* <div className="faq-section">
           <LottiePlayer src="https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json" style={{ position:"absolute", left:30, top:"50%", transform:"translateY(-50%)", width:120, height:120, opacity:0.18, pointerEvents:"none" }} />
           <LottiePlayer src="https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json" style={{ position:"absolute", right:30, top:"50%", transform:"translateY(-50%)", width:120, height:120, opacity:0.18, pointerEvents:"none" }} />
           <div className="faq-inner">
@@ -4504,7 +4504,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* ══ NOTICE ══ */}
         <div className="notice">
