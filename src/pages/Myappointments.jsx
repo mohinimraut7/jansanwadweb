@@ -3468,6 +3468,7 @@ export default function MyAppointments() {
                   <div className="tbl-head-cell">PURPOSE</div>
                   <div className="tbl-head-cell">DATE <span className="sort-icon">⇅</span></div>
                   <div className="tbl-head-cell">SLOT</div>
+                   <div className="tbl-head-cell">APPOINTMENT_TIME</div>
                   <div className="tbl-head-cell">STATUS <span className="sort-icon">⇅</span></div>
                   <div className="tbl-head-cell">ACTIONS</div>
                 </div>
@@ -3526,6 +3527,7 @@ export default function MyAppointments() {
 
                         <div className="cell-date">{formatShort(a.preferredDate)}</div>
                         <div className="cell-slot">{a.slotTime || "—"}</div>
+                          <div className="cell-slot">{a.microSlot || "—"}</div>
 
                         <div>
                           <span
