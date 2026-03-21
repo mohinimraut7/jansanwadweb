@@ -3803,7 +3803,7 @@ export default function Home() {
     { icon: ":🌉", tag: "पायाभूत सुविधा", title: "नारंगी उड्डाणपूल प्रकल्प पाहणी", desc: "नारंगी येथील उड्डाणपुलाच्या कामाची मा. महापौर श्री. अजीव पाटील यांनी प्रत्यक्ष पाहणी केली. या पाहणीदरम्यान संबंधित अधिकारी, रेल्वे अधिकारी, कंत्राटदार व उपकंत्राटदार यांच्याशी चर्चा करून कामाची प्रगती व अडचणी जाणून घेतल्या. तसेच कामाला अधिक गती देण्याच्या सूचना दिल्या. हा उड्डाणपूल चालू महिन्याच्या अखेरीपर्यंत वाहतुकीसाठी खुला करण्याचा प्रयत्न सुरू आहे.", progress: 68, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 42 कोटी", deadline: "डिसेंबर 2025", stat: "", statLbl: "मार्च २०२६ अखेर वाहतुकीसाठी खुले", accent: "#51ABAC", bg: "#e8f7f7", bgimg: narangibridgepahani },
     { icon: "🏛️", title: "समिती गठनाबाबत चर्चा", desc: "स्थायी समितीच्या महत्त्वाच्या विषयांवर तसेच प्रभाग समित्यांच्या गठनाबाबत  चर्चा सुरू आहे.", progress: 45, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "", statLbl: "", accent: "#028945", bg: "#e8f5ef", bgimg: meeting },
     { icon: "💧", tag: "पाणीपुरवठा", title: "24×7 पाणीपुरवठा योजना — वसई विभाग", desc: "वसई विभागातील नागरिकांना 24 तास शुद्ध पाणी उपलब्ध करण्यासाठी नवीन जलवाहिन्या टाकणे, जुन्या पाइपलाइनचे नूतनीकरण आणि नवीन पाण्याच्या टाक्या बांधणे.", progress: 45, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "1.2 लाख", statLbl: "लाभार्थी कुटुंबे", accent: "#028945", bg: "#e8f5ef" },
-    { icon: "🏫", tag: "शिक्षण", title: "VVCMC शाळा डिजिटलायझेशन उपक्रम", desc: "महानगरपालिकेच्या सर्व शाळांमध्ये स्मार्ट बोर्ड, संगणक लॅब आणि इंटरनेट सुविधा उपलब्ध करणे. विद्यार्थ्यांना डिजिटल शिक्षण देण्यासाठी हा उपक्रम राबवला जात आहे.", progress: 30, status: "planning", statusLabel: "नियोजन", budget: "₹ 18 कोटी", deadline: "जून 2026", stat: "94", statLbl: "शाळा डिजिटल", accent: "#D09A50", bg: "#fdf3e0" },
+    // { icon: "🏫", tag: "शिक्षण", title: "VVCMC शाळा डिजिटलायझेशन उपक्रम", desc: "महानगरपालिकेच्या सर्व शाळांमध्ये स्मार्ट बोर्ड, संगणक लॅब आणि इंटरनेट सुविधा उपलब्ध करणे. विद्यार्थ्यांना डिजिटल शिक्षण देण्यासाठी हा उपक्रम राबवला जात आहे.", progress: 30, status: "planning", statusLabel: "नियोजन", budget: "₹ 18 कोटी", deadline: "जून 2026", stat: "94", statLbl: "शाळा डिजिटल", accent: "#D09A50", bg: "#fdf3e0" },
     { icon: "🌳", tag: "पर्यावरण", title: "हरित वसई-विरार — वृक्षारोपण मोहीम", desc: "महानगरपालिका क्षेत्रात 5 लाख झाडे लावण्याचा संकल्प. उद्याने विकसित करणे, रस्त्यांच्या दुतर्फा झाडे लावणे आणि पर्यावरण संतुलन राखणे हे या प्रकल्पाचे उद्दिष्ट.", progress: 55, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 8 कोटी", deadline: "ऑगस्ट 2025", stat: "5 लाख", statLbl: "झाडे लावणार", accent: "#028945", bg: "#e8f5ef" },
   ];
 
@@ -3815,7 +3815,7 @@ export default function Home() {
 
   const faqs = [
     { q: "शहराचा विचार केला तर फेरीवाला धोरण अजूनही राबवण्यात आलेले नाही. त्यामुळे वाहतूक कोंडीचा मोठा सामना करावा लागत आहे आणि लोकांना त्रास होत आहे. यामधून आपण कसा मार्ग काढणार आहोत?", a: "वाहतूक कोंडी कमी करण्यासाठी आणि स्टेशन परिसरातील समस्या सोडवण्यासाठी न्यायालयाच्या मार्गदर्शक तत्त्वांनुसार लवकरात लवकर कारवाई करण्यात येईल. संपूर्ण स्टेशन परिसर टप्प्याटप्प्याने मोकळा करून नागरिकांना होणारा त्रास कमी करण्यावर भर दिला जाईल." },
-    { q: "Appointment बुक करण्यासाठी काय करावे लागेल?", a: "प्रथम Register करा, त्यानंतर उपलब्ध date आणि time slot निवडा, आवश्यक माहिती भरा आणि Submit करा. Admin approval नंतर तुम्हाला Confirmation Token मिळेल." },
+    { q: "Appointment बुक करण्यासाठी काय करावे लागेल?", a: "प्रथम नोंदणी करा, त्यानंतर उपलब्ध date आणि time slot निवडा, आवश्यक माहिती भरा आणि Submit करा. Admin approval नंतर तुम्हाला Confirmation Token मिळेल." },
     { q: "Appointment confirm होण्यासाठी किती वेळ लागतो?", a: "Appointment submit केल्यानंतर Admin द्वारे review केले जाते. साधारणतः 1-2 कार्यालयीन दिवसांत confirmation दिली जाते. SMS आणि Portal वर status दिसेल." },
     { q: "भेटीच्या दिवशी काय घेऊन यावे?", a: "भेटीच्या दिवशी तुमचा Confirmation Token आणि एक valid ओळखपत्र (Aadhar Card, Voter ID इ.) सोबत आणावे. Token शिवाय भेट होणार नाही." },
     { q: "Appointment Cancel किंवा Reschedule करता येते का?", a: "होय, तुम्ही 'My Appointments' section मध्ये जाऊन Appointment cancel किंवा reschedule करू शकता. भेटीच्या 24 तास आधी बदल करणे आवश्यक आहे." },
@@ -3823,10 +3823,10 @@ export default function Home() {
   ];
 
   const steps = [
-    { lottie: "https://assets3.lottiefiles.com/packages/lf20_jbb3xnwi.json", title: "Register करा", desc: "Mobile number वापरून account तयार करा — फक्त 1 मिनिट" },
-    { lottie: "https://assets4.lottiefiles.com/packages/lf20_tljjahng.json", title: "Date निवडा", desc: "Mayor च्या available dates आणि time slots मधून निवडा" },
-    { lottie: "https://assets9.lottiefiles.com/packages/lf20_xyadoh9h.json", title: "Details भरा", desc: "भेटीचे कारण, visitors संख्या आणि photo द्या" },
-    { lottie: "https://assets10.lottiefiles.com/packages/lf20_attdh2fv.json", title: "Token मिळवा", desc: "Confirmation token आणि QR code मिळेल — भेटीच्या दिवशी दाखवा" },
+    { lottie: "https://assets3.lottiefiles.com/packages/lf20_jbb3xnwi.json", title: "नोंदणी करा", desc: "Mobile number वापरून account तयार करा." },
+    { lottie: "https://assets4.lottiefiles.com/packages/lf20_tljjahng.json", title: "तारीख निवडा", desc: "Mayor च्या available dates आणि time slots मधून निवडा" },
+    { lottie: "https://assets9.lottiefiles.com/packages/lf20_xyadoh9h.json", title: "तपशील भरा", desc: "भेटीचे कारण, visitors संख्या आणि photo द्या" },
+    { lottie: "https://assets10.lottiefiles.com/packages/lf20_attdh2fv.json", title: "टोकन मिळवा", desc: "Confirmation token आणि QR code मिळेल — भेटीच्या दिवशी दाखवा" },
   ];
 
   const p = projects[projIdx];
@@ -4305,7 +4305,7 @@ export default function Home() {
             <div className="hiw-header">
               <h2 className="hiw-title">कसे काम करते?</h2>
               <div className="hiw-title-bar" />
-              <p className="hiw-sub">फक्त 4 सोप्या steps मध्ये Mayor ची भेट बुक करा</p>
+              <p className="hiw-sub">४ टप्प्यांमध्ये महापौरांची भेट बुक करा.</p>
             </div>
             <div className="hiw-grid-wrap">
               <div className="hiw-connector" aria-hidden="true" />
