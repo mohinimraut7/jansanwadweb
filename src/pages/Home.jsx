@@ -4532,6 +4532,8 @@ import { useNavigate } from "react-router-dom";
 import heroBg from "../assets/vvcmcbuildingbanner.png";
 import mayorPhoto from "../assets/ajivsir1.jpeg";
 import meeting from "../assets/meeting2.jpeg";
+import tree from "../assets/tree.jfif";
+import pani from "../assets/pani2.jpg";
 import narangibridgepahani from "../assets/narangibridgeahani.jpeg";
 import logo from "../assets/logo2new.jpeg";
 
@@ -4565,8 +4567,8 @@ export default function Home() {
   const projects = [
     { icon: "🌉", tag: "पायाभूत सुविधा", title: "नारंगी उड्डाणपूल प्रकल्प पाहणी", desc: "नारंगी येथील उड्डाणपुलाच्या कामाची मा. महापौर श्री. अजीव पाटील यांनी प्रत्यक्ष पाहणी केली. या पाहणीदरम्यान संबंधित अधिकारी, रेल्वे अधिकारी, कंत्राटदार व उपकंत्राटदार यांच्याशी चर्चा करून कामाची प्रगती व अडचणी जाणून घेतल्या. तसेच कामाला अधिक गती देण्याच्या सूचना दिल्या.", progress: 68, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 42 कोटी", deadline: "डिसेंबर 2025", stat: "", statLbl: "मार्च २०२६ अखेर वाहतुकीसाठी खुले", accent: "#51ABAC", bgimg: narangibridgepahani },
     { icon: "🏛️", tag: "प्रशासन", title: "समिती गठनाबाबत चर्चा", desc: "स्थायी समितीच्या महत्त्वाच्या विषयांवर तसेच प्रभाग समित्यांच्या गठनाबाबत चर्चा सुरू आहे.", progress: 45, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "", statLbl: "", accent: "#028945", bgimg: meeting },
-    { icon: "💧", tag: "पाणीपुरवठा", title: "24×7 पाणीपुरवठा योजना — वसई विभाग", desc: "वसई विभागातील नागरिकांना 24 तास शुद्ध पाणी उपलब्ध करण्यासाठी नवीन जलवाहिन्या टाकणे, जुन्या पाइपलाइनचे नूतनीकरण आणि नवीन पाण्याच्या टाक्या बांधणे.", progress: 45, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "1.2 लाख", statLbl: "लाभार्थी कुटुंबे", accent: "#028945" },
-    { icon: "🌳", tag: "पर्यावरण", title: "हरित वसई-विरार — वृक्षारोपण मोहीम", desc: "महानगरपालिका क्षेत्रात 5 लाख झाडे लावण्याचा संकल्प. उद्याने विकसित करणे, रस्त्यांच्या दुतर्फा झाडे लावणे आणि पर्यावरण संतुलन राखणे हे या प्रकल्पाचे उद्दिष्ट.", progress: 55, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 8 कोटी", deadline: "ऑगस्ट 2025", stat: "5 लाख", statLbl: "झाडे लावणार", accent: "#028945" },
+    { icon: "💧", tag: "पाणीपुरवठा", title: "24×7 पाणीपुरवठा योजना — वसई विभाग", desc: "वसई विभागातील नागरिकांना 24 तास शुद्ध पाणी उपलब्ध करण्यासाठी नवीन जलवाहिन्या टाकणे, जुन्या पाइपलाइनचे नूतनीकरण आणि नवीन पाण्याच्या टाक्या बांधणे.", progress: 45, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "1.2 लाख", statLbl: "लाभार्थी कुटुंबे", accent: "#028945",bgimg:pani },
+    { icon: "🌳", tag: "पर्यावरण", title: "हरित वसई-विरार — वृक्षारोपण मोहीम", desc: "महानगरपालिका क्षेत्रात 5 लाख झाडे लावण्याचा संकल्प. उद्याने विकसित करणे, रस्त्यांच्या दुतर्फा झाडे लावणे आणि पर्यावरण संतुलन राखणे हे या प्रकल्पाचे उद्दिष्ट.", progress: 55, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 8 कोटी", deadline: "ऑगस्ट 2025", stat: "5 लाख", statLbl: "झाडे लावणार", accent: "#028945",bgimg:tree},
   ];
 
   useEffect(() => {
