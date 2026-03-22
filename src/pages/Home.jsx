@@ -4533,7 +4533,7 @@ import heroBg from "../assets/vvcmcbuildingbanner.png";
 import mayorPhoto from "../assets/ajivsir1.jpeg";
 import meeting from "../assets/meeting2.jpeg";
 import tree from "../assets/tree.jfif";
-import pani from "../assets/pani2.jpg";
+import pani from "../assets/pani3.jpg";
 import narangibridgepahani from "../assets/narangibridgeahani.jpeg";
 import logo from "../assets/logo2new.jpeg";
 
