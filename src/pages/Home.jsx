@@ -4529,7 +4529,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import heroBg from "../assets/vvcmcbuildingbanner.png";
+// import heroBg from "../assets/vvcmcbuildingbanner.png";
+import heroBg from "../assets/ajivsir8.jpeg";
+
 import mayorPhoto from "../assets/ajivsir1.jpeg";
 import meeting from "../assets/meeting2.jpeg";
 import tree from "../assets/tree.jfif";
@@ -4689,7 +4691,7 @@ const clampedNewsIdx = Math.min(newsIdx, newsMaxIdx);
 
         /* ══ HERO ══ */
         .hero { position:relative; min-height:calc(100vh - 64px); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 24px 72px; overflow:hidden; }
-        .hero::before { content:''; position:absolute; inset:0; background-image:url(${heroBg}); background-size:cover; background-position:center top; background-repeat:no-repeat; z-index:0; }
+        .hero::before { content:''; position:absolute; inset:0; background-image:url(${heroBg}); background-size:cover; background-position:left; background-repeat:no-repeat; z-index:0; }
         .hero::after { content:''; position:absolute; inset:0; background:rgba(40,120,120,0.72); z-index:1; }
         .hero > * { position:relative; z-index:2; }
         .hero-orbit { position:absolute; inset:0; z-index:2; pointer-events:none; }
