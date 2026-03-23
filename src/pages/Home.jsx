@@ -4582,14 +4582,25 @@ export default function Home() {
     const t = setInterval(() => { setProjIdx(i => (i + 1) % projects.length); }, 4000);
     return () => clearInterval(t);
   }, [autoPlay, projects.length]);
+
   // ADD THIS — news auto-play timer
+// useEffect(() => {
+//   if (!newsAuto) return;
+//   const t = setInterval(() => {
+//     setNewsIdx(i => i >= newsMaxIdx ? 0 : i + 1);
+//   }, 4000);
+//   return () => clearInterval(t);
+// }, [newsAuto]);
+
+
 useEffect(() => {
   if (!newsAuto) return;
   const t = setInterval(() => {
     setNewsIdx(i => i >= newsMaxIdx ? 0 : i + 1);
-  }, 4000);
+  }, 5000); // 5 seconds - gives time for all 4 cards to animate (4 cards × 1s delay + animation time)
   return () => clearInterval(t);
 }, [newsAuto]);
+
 
 //   useEffect(() => {
 //   if (!newsViewport.current) return;
@@ -5326,13 +5337,30 @@ const clampedNewsIdx = Math.min(newsIdx, newsMaxIdx);
         /* ══ NEWS SLIDER ══ */
         /* ══ STAGGERED CARD ANIMATION ══ */
 
-.news-card {
-  animation: cardSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+/* ══ NEWS SLIDER ══ */
+/* ══ STAGGERED CARD ANIMATION ══ */
+
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
+.news-card {
+  animation: cardSlideIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Staggered delays - each card appears 1 second after the previous */
 .news-card:nth-child(1) { animation-delay: 0s;    }
-.news-card:nth-child(2) { animation-delay: 0.12s; }
-.news-card:nth-child(3) { animation-delay: 0.24s; }
-.news-card:nth-child(4) { animation-delay: 0.36s; }
+.news-card:nth-child(2) { animation-delay: 1s;    }
+.news-card:nth-child(3) { animation-delay: 2s;    }
+.news-card:nth-child(4) { animation-delay: 3s;    }
+
         .news-section { background:#F4E7BE; padding:72px 32px 80px; position:relative; overflow:hidden; }
         .news-section::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 15% 60%,rgba(76,171,193,0.08) 0%,transparent 50%),radial-gradient(circle at 85% 20%,rgba(102,169,98,0.07) 0%,transparent 50%); pointer-events:none; }
         .news-inner { max-width:1060px; margin:0 auto; position:relative; z-index:1; }
