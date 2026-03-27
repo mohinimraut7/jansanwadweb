@@ -2898,19 +2898,55 @@ const STATUS_CFG = {
   expired:  { bg:"#f3f4f6", color:"#6b7280", border:"#e5e7eb",  label:"🕰️ Expired"  },
 };
 
+// function Avatar({ name, photo, size = 40 }) {
+//    const [imgError, setImgError] = useState(false); // ✅ ADD
+//   const initials = name ? name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0,2) : "?";
+//   const colors = ["#0d9488","#0891b2","#7c3aed","#db2777","#ea580c","#16a34a"];
+//   const colorIdx = name ? name.charCodeAt(0) % colors.length : 0;
+//   if (photo) {
+//     return (
+//       <img
+//         src={photo.startsWith("http") ? photo : `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/${photo}`}
+//         alt={name}
+//         style={{ width:size, height:size, borderRadius:"50%", objectFit:"cover", border:"2px solid #e2e8f0", flexShrink:0 }}
+//       />
+//     );
+//   }
+//   return (
+//     <div style={{
+//       width:size, height:size, borderRadius:"50%", background:colors[colorIdx],
+//       color:"#fff", display:"flex", alignItems:"center", justifyContent:"center",
+//       fontSize: size * 0.35, fontWeight:700, fontFamily:"'DM Sans',sans-serif",
+//       flexShrink:0, border:"2px solid rgba(255,255,255,0.3)"
+//     }}>{initials}</div>
+//   );
+// }
+
+
 function Avatar({ name, photo, size = 40 }) {
+  const [imgError, setImgError] = useState(false); // ✅ ADD
+
   const initials = name ? name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0,2) : "?";
   const colors = ["#0d9488","#0891b2","#7c3aed","#db2777","#ea580c","#16a34a"];
   const colorIdx = name ? name.charCodeAt(0) % colors.length : 0;
-  if (photo) {
+
+  const photoUrl = photo
+    ? photo.startsWith("http")
+      ? photo
+      : `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/${photo}`
+    : null;
+
+  if (photoUrl && !imgError) { // ✅ check imgError
     return (
       <img
-        src={photo.startsWith("http") ? photo : `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/${photo}`}
+        src={photoUrl}
         alt={name}
+        onError={() => setImgError(true)} // ✅ fallback to initials on 404
         style={{ width:size, height:size, borderRadius:"50%", objectFit:"cover", border:"2px solid #e2e8f0", flexShrink:0 }}
       />
     );
   }
+
   return (
     <div style={{
       width:size, height:size, borderRadius:"50%", background:colors[colorIdx],
@@ -3650,6 +3686,58 @@ export default function MyAppointments() {
                   <strong>Admin Note:</strong> {selected.adminNote}
                 </div>
               )}
+
+       {selected.replyDocument && (
+  <div style={{ background:"#f0fdf4", border:"1px solid #86efac", borderRadius:8, padding:"10px 14px", marginTop:8, fontSize:13 }}>
+    <p style={{ color:"#166534", fontWeight:700, margin:"0 0 6px" }}>📎 Document from Admin</p>
+    <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+
+      {/* ✅ Preview — Google Viewer for PDF, direct for images */}
+      <button
+        onClick={() => {
+          const isPdf = selected.replyDocument?.toLowerCase().includes(".pdf") || selected.replyDocument?.toLowerCase().includes("inward_pdf");
+          if (isPdf) {
+            const previewUrl = `https://docs.google.com/gview?url=${encodeURIComponent(selected.replyDocument)}&embedded=true`;
+            window.open(previewUrl, "_blank");
+          } else {
+            window.open(selected.replyDocument, "_blank");
+          }
+        }}
+        style={{ color:"#16a34a", fontWeight:600, fontSize:13, background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}
+      >
+        📄 View Document
+      </button>
+
+      {/* ✅ Download */}
+      <button
+        onClick={async () => {
+          try {
+            const response = await fetch(selected.replyDocument);
+            const fileBlob = await response.blob();
+            const isPdf = selected.replyDocument?.toLowerCase().includes(".pdf") || selected.replyDocument?.toLowerCase().includes("inward_pdf");
+            const blob = new Blob([fileBlob], { type: isPdf ? "application/pdf" : fileBlob.type });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = isPdf ? "document.pdf" : "document";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+          } catch (err) {
+            console.error("Download failed", err);
+          }
+        }}
+        style={{ color:"#64748b", background:"none", border:"none", cursor:"pointer", fontSize:16 }}
+        title="Download"
+      >
+        ⬇
+      </button>
+
+    </div>
+  </div>
+)}
+
 
               {selected.qrCode && (
                 <div style={{ textAlign:"center", marginTop:20, paddingTop:16, borderTop:"1px solid #f1f5f9" }}>
