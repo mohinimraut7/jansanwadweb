@@ -4573,10 +4573,10 @@ export default function Home() {
 
 
   const projects = [
-    { icon: "🌉", tag: "पायाभूत सुविधा", title: "नारंगी उड्डाणपूल प्रकल्प पाहणी", desc: "नारंगी येथील उड्डाणपुलाच्या कामाची मा. महापौर श्री. अजीव पाटील यांनी प्रत्यक्ष पाहणी केली. या पाहणीदरम्यान संबंधित अधिकारी, रेल्वे अधिकारी, कंत्राटदार व उपकंत्राटदार यांच्याशी चर्चा करून कामाची प्रगती व अडचणी जाणून घेतल्या. तसेच कामाला अधिक गती देण्याच्या सूचना दिल्या.", progress: 68, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 42 कोटी", deadline: "डिसेंबर 2025", stat: "", statLbl: "मार्च २०२६ अखेर वाहतुकीसाठी खुले", accent: "#51ABAC", bgimg: narangibridgepahani },
-    { icon: "🏛️", tag: "प्रशासन", title: "समिती गठनाबाबत चर्चा", desc: "स्थायी समितीच्या महत्त्वाच्या विषयांवर तसेच प्रभाग समित्यांच्या गठनाबाबत चर्चा सुरू आहे.", progress: 45, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "", statLbl: "", accent: "#028945", bgimg: meeting },
-    { icon: "💧", tag: "पाणीपुरवठा", title: "24×7 पाणीपुरवठा योजना — वसई विभाग", desc: "वसई विभागातील नागरिकांना 24 तास शुद्ध पाणी उपलब्ध करण्यासाठी नवीन जलवाहिन्या टाकणे, जुन्या पाइपलाइनचे नूतनीकरण आणि नवीन पाण्याच्या टाक्या बांधणे.", progress: 45, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "1.2 लाख", statLbl: "लाभार्थी कुटुंबे", accent: "#028945",bgimg:pani },
-    { icon: "🌳", tag: "पर्यावरण", title: "हरित वसई-विरार — वृक्षारोपण मोहीम", desc: "महानगरपालिका क्षेत्रात 5 लाख झाडे लावण्याचा संकल्प. उद्याने विकसित करणे, रस्त्यांच्या दुतर्फा झाडे लावणे आणि पर्यावरण संतुलन राखणे हे या प्रकल्पाचे उद्दिष्ट.", progress: 55, status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 8 कोटी", deadline: "ऑगस्ट 2025", stat: "5 लाख", statLbl: "झाडे लावणार", accent: "#028945",bgimg:tree},
+    { icon: "🌉", tag: "पायाभूत सुविधा", title: "नारंगी उड्डाणपूल प्रकल्प पाहणी", desc: "नारंगी येथील उड्डाणपुलाच्या कामाची मा. महापौर श्री. अजीव पाटील यांनी प्रत्यक्ष पाहणी केली. या पाहणीदरम्यान संबंधित अधिकारी, रेल्वे अधिकारी, कंत्राटदार व उपकंत्राटदार यांच्याशी चर्चा करून कामाची प्रगती व अडचणी जाणून घेतल्या. तसेच कामाला अधिक गती देण्याच्या सूचना दिल्या.", progress:'', status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 42 कोटी", deadline: "डिसेंबर 2025", stat: "", statLbl: "मार्च २०२६ अखेर वाहतुकीसाठी खुले", accent: "#51ABAC", bgimg: narangibridgepahani },
+    { icon: "🏛️", tag: "प्रशासन", title: "समिती गठनाबाबत चर्चा", desc: "स्थायी समितीच्या महत्त्वाच्या विषयांवर तसेच प्रभाग समित्यांच्या गठनाबाबत चर्चा सुरू आहे.", progress: '', status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "", statLbl: "", accent: "#028945", bgimg: meeting },
+    { icon: "💧", tag: "पाणीपुरवठा", title: "24×7 पाणीपुरवठा योजना — वसई विभाग", desc: "वसई विभागातील नागरिकांना 24 तास शुद्ध पाणी उपलब्ध करण्यासाठी नवीन जलवाहिन्या टाकणे, जुन्या पाइपलाइनचे नूतनीकरण आणि नवीन पाण्याच्या टाक्या बांधणे.", progress:'', status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 85 कोटी", deadline: "मार्च 2026", stat: "1.2 लाख", statLbl: "लाभार्थी कुटुंबे", accent: "#028945",bgimg:pani },
+    { icon: "🌳", tag: "पर्यावरण", title: "हरित वसई-विरार — वृक्षारोपण मोहीम", desc: "महानगरपालिका क्षेत्रात 5 लाख झाडे लावण्याचा संकल्प. उद्याने विकसित करणे, रस्त्यांच्या दुतर्फा झाडे लावणे आणि पर्यावरण संतुलन राखणे हे या प्रकल्पाचे उद्दिष्ट.", progress:'', status: "ongoing", statusLabel: "सुरू आहे", budget: "₹ 8 कोटी", deadline: "ऑगस्ट 2025", stat: "5 लाख", statLbl: "झाडे लावणार", accent: "#028945",bgimg:tree},
   ];
 
   useEffect(() => {
@@ -4631,7 +4631,7 @@ useEffect(() => {
 
    const newsItems = [
     {
-      day: "28",
+      // day: "28",
       tag: "🌿 शिबिर प्रदर्शन",
       title: "घनकचरा व्यवस्थापन शिबिर-प्रदर्शन उद्घाटन",
       rows: ["घनकचरा व्यवस्थापन प्रदर्शन", "खत निर्मिती तंत्रज्ञान प्रदर्शन"],
@@ -4641,7 +4641,7 @@ useEffect(() => {
       dotColors: ["#4CABC1", "#66A962"],
     },
     {
-      day: "11",
+      // day: "11",
       tag: "🧹 स्वच्छता आढावा",
       title: "दैनंदिन कचरा संकलन व स्वच्छता बैठक",
       rows: ["कचरा संकलन व वर्गीकरण", "गटार व नाले साफसफाई"],
@@ -4651,7 +4651,7 @@ useEffect(() => {
       dotColors: ["#66A962", "#CA9D28"],
     },
     {
-      day: "10",
+      // day: "10",
       tag: "🛣️ रस्ते विकास",
       title: "रस्ते दुरुस्ती व पायाभूत सुविधा नियोजन बैठक",
       rows: ["रस्ते दुरुस्ती व बांधकाम", "फुटपाथ उभारणी नियोजन"],
@@ -4661,7 +4661,7 @@ useEffect(() => {
       dotColors: ["#CA9D28", "#CE9A54"],
     },
     {
-      day: "05",
+      // day: "05",
       tag: "⚡ वीज विकास",
       title: "MSEDCL वसई मंडळ आढावा बैठक",
       rows: ["MSEDCL विकास कामे आढावा", "महापौर व नगर सेवक बैठक"],
@@ -5382,7 +5382,7 @@ const clampedNewsIdx = Math.min(newsIdx, newsMaxIdx);
         .nc-widget { margin:20px 20px 0; background:rgba(255,255,255,0.82); border-radius:16px; padding:14px 16px 16px; backdrop-filter:blur(8px); position:relative; z-index:2; box-shadow:0 4px 20px rgba(0,0,0,0.08); flex-shrink:0; }
         .nc-widget-day { font-family:'Crimson Pro',serif; font-size:32px; font-weight:800; color:#1a2a2a; line-height:1; margin-bottom:12px; }
         .nc-widget-rows { display:flex; flex-direction:column; gap:8px; }
-        .nc-widget-row { display:flex; align-items:center; gap:8px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:#2a3a3a; }
+        .nc-widget-row { display:flex; align-items:center; gap:8px; font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; color:#2a3a3a; }
         .nc-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
         .nc-caption { margin-top:auto; padding:16px 20px 20px; position:relative; z-index:2; }
         .nc-tag { display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,0.55); border:1px solid rgba(255,255,255,0.8); color:#1a3a3a; font-size:10px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:9px; letter-spacing:.5px; text-transform:uppercase; backdrop-filter:blur(4px); font-family:'DM Sans',sans-serif; }
@@ -5668,7 +5668,9 @@ const clampedNewsIdx = Math.min(newsIdx, newsMaxIdx);
                 <p className="proj-desc">{p.desc}</p>
                 <div className="proj-progress-row">
                   <span className="proj-progress-lbl">प्रगती</span>
-                  <span className="proj-progress-pct" style={{ color: p.accent }}>{p.progress}%</span>
+                  {/* <span className="proj-progress-pct" style={{ color: p.accent }}>{p.progress}%</span> */}
+                    <span className="proj-progress-pct" style={{ color: p.accent }}>{p.progress}</span>
+
                 </div>
                 <div className="proj-bar">
                   <div className="proj-bar-fill" style={{ width: `${p.progress}%`, background: `linear-gradient(90deg,${p.accent}88,${p.accent})` }} />
