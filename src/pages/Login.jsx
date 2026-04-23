@@ -86,6 +86,9 @@ export default function Login() {
     setCanResend(false);
     setOtp(["", "", "", "", "", ""]);
 
+// const smsText = `Dear Citizen ${newOtp} is OTP for VVCMC Jan Samvaad login for citizen registration.VVCMC`;
+// const smsApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVCMCJS&mobileno=${mobile}&text=${encodeURIComponent(smsText)}`;
+
     const smsText = `Dear Citizen ${newOtp} is OTP for VVCMC Divyang Kalyan Management System login for citizen registration.VVCMC`;
     const smsApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVMCDM&mobileno=${mobile}&text=${encodeURIComponent(smsText)}`;
 

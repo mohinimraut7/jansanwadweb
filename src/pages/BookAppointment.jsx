@@ -306,7 +306,32 @@ export default function BookAppointment() {
         headers: { "Content-Type": undefined },
       });
       if (!res.data.success) { showToast(res.data.message || "Booking failed ❌","error"); return; }
-      setBooked(res.data.data);
+
+const appt = res.data.data;
+      const mobile = appt.mobileNumber || form.mobileNumber;
+
+      const statusMessage = {
+        pending:   `Pending — Awaiting Mayor's Approval`,
+        approved:  `Approved by Respected Mayor Ajiv Patil Sir`,
+        rejected:  `Rejected by Admin`,
+        cancelled: `Cancelled`
+      }[appt.status] || appt.status;
+
+      // const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment is ${statusMessage}. Date: ${formatShort(appt.preferredDate)}, Time Slot: ${appt.microSlot || appt.slotTime}, Token No: ${appt.tokenId}. - VVCMC Jan Samvaad`;
+
+      // const waApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVCMCJS&mobileno=${mobile}&text=${encodeURIComponent(whatsupText)}`;
+
+    const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment Status: ${statusMessage}. Date: ${formatShort(appt.preferredDate)}, Time Slot: ${appt.microSlot || appt.slotTime}, Token No: ${appt.tokenId}. Please carry this Token No on your visit day. VVCMC Jan Samvaad`;
+
+const waApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVCMCJS&mobileno=${mobile}&text=${encodeURIComponent(whatsupText)}`;
+    
+    
+    
+      await fetch(waApiUrl);
+
+      setBooked(appt);
+
+      // setBooked(res.data.data);
     } catch(e) {
       showToast(e?.response?.data?.message || "Server Error ❌","error");
     } finally { setSubmitting(false); }

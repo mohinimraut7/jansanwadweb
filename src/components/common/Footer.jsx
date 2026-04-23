@@ -330,11 +330,11 @@ export default function Footer() {
 
           {/* Col 4 — Map */}
           <div>
-            <div className="footer-col-title">VVCMC क्षेत्र नकाशा</div>
-            <div className="footer-map-wrap">
+            {/* <div className="footer-col-title">VVCMC क्षेत्र नकाशा</div> */}
+            {/* <div className="footer-map-wrap">
               <img src={vvcmcMap} alt="वसई विरार महानगरपालिका नकाशा" />
               <div className="footer-map-label">वसई-विरार शहर महानगरपालिका — Ward Map</div>
-            </div>
+            </div> */}
           </div>
 
         </div>
