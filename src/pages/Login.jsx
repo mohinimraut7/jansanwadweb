@@ -69,16 +69,31 @@ export default function Login() {
     }
   };
 
-  // ── Send OTP ──────────────────────────────────────────────────────────────
+  
   const sendOtp = async () => {
     const mobile = mobileNo.trim();
     if (!/^[0-9]{10}$/.test(mobile)) {
-      setError("10 अंकी valid mobile number टाका!");
+      setError("10 digit valid mobile number enter करा!");
       return;
     }
 
     setError("");
     setOtpLoading(true);
+
+    // ✅ ADD THIS BLOCK — Check if mobile is registered before sending OTP
+    try {
+      const checkRes = await citizenAxios.post("/citizen/check-mobile", { mobileNo: mobile });
+      if (!checkRes.data.success) {
+        setError(checkRes.data.message || "Mobile not registered ❌");
+        setOtpLoading(false);
+        return;
+      }
+    } catch (err) {
+      setError(err?.response?.data?.message || "Mobile number not registered. Please Register first ❌");
+      setOtpLoading(false);
+      return;
+    }
+    // ✅ END OF ADDED BLOCK
 
     const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
     setGeneratedOtp(newOtp);
@@ -86,11 +101,8 @@ export default function Login() {
     setCanResend(false);
     setOtp(["", "", "", "", "", ""]);
 
-// const smsText = `Dear Citizen ${newOtp} is OTP for VVCMC Jan Samvaad login for citizen registration.VVCMC`;
-// const smsApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVCMCJS&mobileno=${mobile}&text=${encodeURIComponent(smsText)}`;
-
-    const smsText = `Dear Citizen ${newOtp} is OTP for VVCMC Divyang Kalyan Management System login for citizen registration.VVCMC`;
-    const smsApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVMCDM&mobileno=${mobile}&text=${encodeURIComponent(smsText)}`;
+    const smsText = `Dear Citizen, Your OTP for VVCMC Jan Samvaad Portal login is ${newOtp}. This OTP is valid for 60 seconds. Do not share this OTP with anyone. SAAVI INFINET`;
+    const smsApiUrl = `https://smsfortius.work/V2/apikey.php?apikey=dWaYXxSkYneCVvUL&senderid=SAAVIT&templateid=1607100000000379315&number=${mobile}&message=${smsText}`;
 
     fetch(smsApiUrl, { method: "GET", mode: "no-cors" }).catch(() => {});
 
