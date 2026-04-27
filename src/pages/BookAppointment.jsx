@@ -317,13 +317,13 @@ const appt = res.data.data;
         cancelled: `Cancelled`
       }[appt.status] || appt.status;
 
-      // const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment is ${statusMessage}. Date: ${formatShort(appt.preferredDate)}, Time Slot: ${appt.microSlot || appt.slotTime}, Token No: ${appt.tokenId}. - VVCMC Jan Samvaad`;
+  
+    
+      // const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment Status: ${statusMessage}. Date: ${formatShort(appt.preferredDate)}, Time Slot: ${appt.microSlot || appt.slotTime}, Token No: ${appt.tokenId}. Please carry this Token No on your visit day. VVCMC Jan Samvaad`;
 
-      // const waApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVCMCJS&mobileno=${mobile}&text=${encodeURIComponent(whatsupText)}`;
+      const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment Status: ${statusMessage} Date: ${formatShort(appt.preferredDate)} Time Slot: ${appt.microSlot || appt.slotTime} Token No: ${appt.tokenId} Please carry this Token No on your visit day. SAAVI INFINET`;
 
-    const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment Status: ${statusMessage}. Date: ${formatShort(appt.preferredDate)}, Time Slot: ${appt.microSlot || appt.slotTime}, Token No: ${appt.tokenId}. Please carry this Token No on your visit day. VVCMC Jan Samvaad`;
-
-const waApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&route=&sender=VVCMCJS&mobileno=${mobile}&text=${encodeURIComponent(whatsupText)}`;
+      const waApiUrl = `https://smsfortius.work/V2/apikey.php?apikey=dWaYXxSkYneCVvUL&senderid=SAAVIT&templateid=1607100000000379324&number=${mobile}&message=${encodeURIComponent(whatsupText)}`;
     
     
     
@@ -794,7 +794,8 @@ const waApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&ro
 
                   {lastPhotoPreview && !form.photoPreview && (
                     <div className="last-photo-hint">
-                      <img src={`${import.meta.env.VITE_BASE_URL || "http://localhost:4200"}/${lastPhotoPreview}`}
+                      {/* <img src={`${import.meta.env.VITE_BASE_URL || "http://localhost:4200"}/${lastPhotoPreview}`} */}
+                        <img src={`${lastPhotoPreview}`}
                         alt="last visit"
                         style={{ width:48, height:48, borderRadius:"50%", objectFit:"cover", border:"2px solid #7ec89a", flexShrink:0 }}
                         onError={e => { e.target.style.display="none"; }}
@@ -803,9 +804,17 @@ const waApiUrl = `https://1.rapidsms.co.in/api/push.json?apikey=67e12059b220a&ro
                         <p style={{ margin:0, fontWeight:700, fontSize:13 }}>मागील भेटीचा फोटो उपलब्ध आहे</p>
                         <button type="button"
                           style={{ marginTop:4, fontSize:12, color:"var(--teal)", fontWeight:700, background:"none", border:"none", cursor:"pointer", padding:0, textDecoration:"underline" }}
+                          // onClick={() => {
+                          //   setForm(p => ({ ...p, photoPreview: `${import.meta.env.VITE_BASE_URL || "http://localhost:4200"}/${lastPhotoPreview}`, visitorPhoto: lastPhotoPreview }));
+                          // }}
                           onClick={() => {
-                            setForm(p => ({ ...p, photoPreview: `${import.meta.env.VITE_BASE_URL || "http://localhost:4200"}/${lastPhotoPreview}`, visitorPhoto: lastPhotoPreview }));
-                          }}>
+  setForm(p => ({
+    ...p,
+    photoPreview: lastPhotoPreview,   // ✅ direct Cloudinary URL
+    visitorPhoto: lastPhotoPreview
+  }));
+}}
+                          >
                           हाच फोटो वापरा ↗
                         </button>
                       </div>
