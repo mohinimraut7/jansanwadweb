@@ -307,8 +307,18 @@ export default function BookAppointment() {
       });
       if (!res.data.success) { showToast(res.data.message || "Booking failed ❌","error"); return; }
 
+// const appt = res.data.data;
+//       const mobile = appt.mobileNumber || form.mobileNumber;
 const appt = res.data.data;
       const mobile = appt.mobileNumber || form.mobileNumber;
+       const fName = appt.fullName || form.fullName;
+
+      const formatShort = (d) => {
+        if (!d) return "—";
+        return new Date(d + "T00:00:00").toLocaleDateString("en-IN", {
+          weekday:"short", day:"numeric", month:"short", year:"numeric"
+        });
+      };
 
       const statusMessage = {
         pending:   `Pending — Awaiting Mayor's Approval`,
@@ -321,13 +331,16 @@ const appt = res.data.data;
     
       // const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment Status: ${statusMessage}. Date: ${formatShort(appt.preferredDate)}, Time Slot: ${appt.microSlot || appt.slotTime}, Token No: ${appt.tokenId}. Please carry this Token No on your visit day. VVCMC Jan Samvaad`;
 
-      const whatsupText = `Dear ${appt.fullName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment Status: ${statusMessage} Date: ${formatShort(appt.preferredDate)} Time Slot: ${appt.microSlot || appt.slotTime} Token No: ${appt.tokenId} Please carry this Token No on your visit day. SAAVI INFINET`;
-
+const whatsupText = `Dear ${fName}, Your appointment with Respected Mayor Ajiv Patil Sir at Vasai Virar City Municipal Corporation has been successfully booked. Appointment Status: ${statusMessage} Date: ${formatShort(appt.preferredDate)} Time Slot: ${appt.microSlot} Token No: ${appt.tokenId} Please carry this Token No on your visit day. SAAVI INFINET`;
+    
+    
+    
+      // await fetch(waApiUrl);
       const waApiUrl = `https://smsfortius.work/V2/apikey.php?apikey=dWaYXxSkYneCVvUL&senderid=SAAVIT&templateid=1607100000000379324&number=${mobile}&message=${encodeURIComponent(whatsupText)}`;
-    
-    
-    
-      await fetch(waApiUrl);
+
+fetch(waApiUrl, { method: "GET", mode: "no-cors" })
+  .then(() => console.log(`✅ SMS sent to ${mobile}`))
+  .catch((err) => console.error("SMS error:", err));
 
       setBooked(appt);
 
