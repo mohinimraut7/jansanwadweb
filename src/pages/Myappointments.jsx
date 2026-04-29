@@ -2877,6 +2877,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import citizenAxios from "../services/citizenAxios";
+import getPhotoUrl from "../services/getPhotoUrl";
 
 function formatDate(d) {
   if (!d) return "—";
@@ -2930,10 +2931,16 @@ function Avatar({ name, photo, size = 40 }) {
   const colors = ["#0d9488","#0891b2","#7c3aed","#db2777","#ea580c","#16a34a"];
   const colorIdx = name ? name.charCodeAt(0) % colors.length : 0;
 
+  // const photoUrl = photo
+  //   ? photo.startsWith("http")
+  //     ? photo
+  //     : `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/${photo}`
+  //   : null;
+
   const photoUrl = photo
     ? photo.startsWith("http")
-      ? photo
-      : `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/${photo}`
+      ? photo.replace("http://localhost:5000", import.meta.env.VITE_FILE_BASE_URL)
+      : `${import.meta.env.VITE_FILE_BASE_URL}/${photo}`
     : null;
 
   if (photoUrl && !imgError) { // ✅ check imgError
