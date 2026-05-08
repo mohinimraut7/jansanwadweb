@@ -342,6 +342,7 @@ fetch(waApiUrl, { method: "GET", mode: "no-cors" })
   .then(() => console.log(`✅ SMS sent to ${mobile}`))
   .catch((err) => console.error("SMS error:", err));
 
+
       setBooked(appt);
 
       // setBooked(res.data.data);
